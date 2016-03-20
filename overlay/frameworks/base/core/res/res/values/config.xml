@@ -133,7 +133,7 @@
     <bool name="config_multiColorBatteryLed">true</bool>
 	
 	<!-- Do the battery/notification LEDs support pulsing? Used to decide if we show pulse settings -->
-    <bool name="config_ledCanPulse">false</bool>
+    <bool name="config_ledCanPulse">true</bool>
 
     <!-- reference volume index for music stream to limit headphone volume and display warning -->
     <integer name="config_safe_media_volume_index">5</integer>
