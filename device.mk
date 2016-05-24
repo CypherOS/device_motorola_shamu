@@ -356,8 +356,9 @@ endif
 PRODUCT_PROPERTY_OVERRIDES += \
    dalvik.vm.heapgrowthlimit=256m
 
-# setup dalvik vm configs
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+# setup dalvik vm configs.
+$(call inherit-product, vendor/extras/configs/phone-xxxhdpi-3072-dalvik-heap.mk)
+$(call inherit-product, vendor/extras/configs/phone-xxxhdpi-3072-hwui-memory.mk)
 
 # setup HWUI configs
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
