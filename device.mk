@@ -400,6 +400,7 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl
 
 PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
     power.shamu \
     thermal.shamu \
     android.hardware.thermal@1.0-impl
