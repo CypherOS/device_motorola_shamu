@@ -388,8 +388,8 @@ static int power_open(const hw_module_t* module, const char* name,
         if (dev) {
             /* Common hw_device_t fields */
             dev->common.tag = HARDWARE_MODULE_TAG;
-            dev->common.module_api_version = POWER_MODULE_API_VERSION_0_5;
-            dev->common.module_api_version = HARDWARE_HAL_API_VERSION;
+            dev->common.module_api_version = POWER_MODULE_API_VERSION_0_2;
+            dev->common.hal_api_version = HARDWARE_HAL_API_VERSION;
 
             dev->init = power_init;
             dev->powerHint = power_hint;
