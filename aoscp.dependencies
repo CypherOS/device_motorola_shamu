@@ -1,0 +1,14 @@
+[
+  {
+    "repository":  "kernel_moto_shamu",
+    "target_path": "kernel/moto/shamu",
+    "branch":      "n7.1",
+	"remote":      "aicp"
+  },
+  {
+    "repository":  "proprietary_vendor_motorola",
+    "target_path": "vendor/motorola",
+    "branch":      "n7.1",
+	"remote":      "aicp"
+  }
+]

@@ -208,17 +208,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     keystore.msm8084
 
-#Snap Camera
+#Camero
 #PRODUCT_PACKAGES += \
-    Snap
+    Camero
 
 # Snap Configs
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.cpp.duplication=false
-
-# Gello
-#PRODUCT_PACKAGES += \
-#    Gello
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610
