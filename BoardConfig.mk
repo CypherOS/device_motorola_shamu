@@ -129,8 +129,8 @@ USE_DEVICE_SPECIFIC_CAMERA:= true
 
 BOARD_HAL_STATIC_LIBRARIES := libdumpstate.shamu
 
-# Use Snapdragon LLVM for Nightlies, if available
-ifeq ($(AICP_BUILDTYPE), UNOFFICIAL)
+# Use Snapdragon LLVM for unofficial builds, if available
+ifeq ($(AOSCP_BUILDTYPE), UNOFFICIAL)
 USE_CLANG_PLATFORM_BUILD := true
 else
 TARGET_USE_SDCLANG := true
