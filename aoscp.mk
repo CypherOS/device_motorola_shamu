@@ -5,9 +5,9 @@ $(call inherit-product, vendor/aoscp/configs/common.mk)
 $(call inherit-product, vendor/aoscp/configs/telephony.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/moto/shamu/aosp_shamu.mk)
+$(call inherit-product, device/motorola/shamu/aosp_shamu.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/moto/shamu/overlay-cm
+DEVICE_PACKAGE_OVERLAYS += device/motorola/shamu/overlay-cm
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2560

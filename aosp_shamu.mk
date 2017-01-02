@@ -30,7 +30,7 @@ PRODUCT_MODEL := Nexus 6
 PRODUCT_MANUFACTURER := motorola
 #PRODUCT_RESTRICT_VENDOR_FILES := true
 
-$(call inherit-product, device/moto/shamu/device.mk)
+$(call inherit-product, device/motorola/shamu/device.mk)
 $(call inherit-product-if-exists, vendor/motorola/shamu/shamu-vendor.mk)
 
 PRODUCT_NAME := aosp_shamu
