@@ -310,6 +310,10 @@ PRODUCT_PACKAGES += \
     liblbs_core \
     flp.conf
 
+# Memtrack HAL
+PRODUCT_PACKAGES += \
+    android.hardware.memtrack@1.0-impl
+
 # NFC packages
 PRODUCT_PACKAGES += \
     nfc_nci.bcm2079x.default \
