@@ -76,6 +76,10 @@ else
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/motorola/shamu/bluetooth
 endif
 
+# Use SurfaceFlinger HWC 2On1 Adaptor
+TARGET_USES_HWC2 := true
+TARGET_USES_HWC2ON1ADAPTER := true
+
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm8084
 TARGET_BOOTLOADER_BOARD_NAME := shamu
