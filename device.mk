@@ -29,6 +29,10 @@ PRODUCT_COPY_FILES += \
     device/motorola/shamu/fstab.shamu:root/fstab.shamu \
     device/motorola/shamu/ueventd.shamu.rc:root/ueventd.shamu.rc
 
+# Vendor Interface Manifest
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
+
 # Input device files for shamu
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
@@ -143,6 +147,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gralloc.msm8084 \
     android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.mapper@2.0-impl \
     hwcomposer.msm8084 \
     memtrack.msm8084 \
