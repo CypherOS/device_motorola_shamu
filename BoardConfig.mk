@@ -85,7 +85,7 @@ TARGET_BOARD_INFO_FILE := device/motorola/shamu/board-info.txt
 
 USE_OPENGL_RENDERER := true
 TARGET_USES_ION := true
-TARGET_USES_GRALLOC1 := true
+TARGET_USES_GRALLOC1_ADAPTER := true
 TARGET_HW_DISK_ENCRYPTION := false
 TARGET_CRYPTFS_HW_PATH := device/motorola/shamu/cryptfs_hw
 
