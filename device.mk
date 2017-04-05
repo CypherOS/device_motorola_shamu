@@ -26,10 +26,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/shamu/fstab.shamu:root/fstab.shamu \
     device/motorola/shamu/ueventd.shamu.rc:root/ueventd.shamu.rc
 
-# Vendor Interface Manifest
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
-
 # Input device files for shamu
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
