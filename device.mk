@@ -504,3 +504,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # miracast props
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1﻿
+
+PRODUCT_ENFORCE_RRO_TARGETS := \
+    framework-res
