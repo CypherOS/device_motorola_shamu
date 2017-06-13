@@ -2,13 +2,13 @@
   {
     "repository":  "kernel_motorola_shamu",
     "target_path": "kernel/motorola/shamu",
-    "branch":      "nougat-mr1",
+    "branch":      "nougat-mr2",
 	"remote":      "aoscp"
   },
   {
     "repository":  "proprietary_vendor_motorola",
     "target_path": "vendor/motorola",
-    "branch":      "nougat-mr1",
+    "branch":      "nougat-mr2",
 	"remote":      "aoscp"
   }
 ]
