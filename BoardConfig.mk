@@ -90,6 +90,7 @@ TARGET_NO_RPC := true
 TARGET_BOARD_INFO_FILE := device/motorola/shamu/board-info.txt
 
 USE_OPENGL_RENDERER := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_USES_ION := true
 TARGET_HW_DISK_ENCRYPTION := false
 TARGET_CRYPTFS_HW_PATH := device/motorola/shamu/cryptfs_hw
