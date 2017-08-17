@@ -40,7 +40,7 @@ PRODUCT_COPY_FILES += \
 	device/motorola/shamu/atmel_mxt_ts.idc:system/usr/idc/atmel_mxt_ts.idc
 
 PRODUCT_COPY_FILES += \
-    device/motorola/shamu/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/motorola/shamu/audio_effects.xml:system/vendor/etc/audio_effects.xml \
     device/motorola/shamu/mixer_paths.xml:system/etc/mixer_paths.xml \
     device/motorola/shamu/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     device/motorola/shamu/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
