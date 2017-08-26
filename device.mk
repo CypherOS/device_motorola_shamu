@@ -425,3 +425,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # OEM Unlock reporting
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.oem_unlock_supported=1
+
+# Keymaster HAL
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl
