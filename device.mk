@@ -122,7 +122,7 @@ PRODUCT_CHARACTERISTICS := nosdcard
 DEVICE_PACKAGE_OVERLAYS := \
     device/motorola/shamu/overlay
 
-PRODUCT_PACKAGES := \
+PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     libwpa_client \
     hostapd \
