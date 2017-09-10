@@ -148,7 +148,8 @@
 /system/bin/ATFWD-daemon        u:object_r:atfwd_exec:s0
 
 # Bluetooth
-/sys/class/rfkill/rfkill0/state u:object_r:sysfs_bluetooth_writable:s0
+/sys/class/rfkill/rfkill0/state -- u:object_r:sysfs_bluetooth_writable:s0
+/sys/class/rfkill/rfkill0/type -- u:object_r:sysfs_bluetooth_writable:s0
 
 # Sysfs entry for the RmNet function driver
 /sys/class/android_usb/f_rmnet_smd_sdio/transport  --  u:object_r:sysfs_rmnet:s0

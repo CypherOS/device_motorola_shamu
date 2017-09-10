@@ -1,4 +1,8 @@
 # Write to /sys/class/rfkill/rfkill0/state
 # TODO: label it sysfs_bluetooth_writable instead
 allow bluetooth sysfs:file rw_file_perms;
+allow bluetooth vendor_file:file { r_file_perms execute };
+allow bluetooth sysfs_bluetooth_writable:file rw_file_perms;
+allow bluetooth self:capability net_admin;
+allow bluetooth self:capability2 wake_alarm;
 allow bluetooth sysfs_usb:file w_file_perms;
