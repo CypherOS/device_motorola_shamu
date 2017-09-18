@@ -135,4 +135,7 @@ TARGET_FS_CONFIG_GEN += device/motorola/shamu/config.fs
 # Disable dex-preopt of prebuilts to save space.
 DONT_DEXPREOPT_PREBUILTS := true
 
+# Recovery
+LZMA_RAMDISK_TARGETS := recovery
+
 -include vendor/motorola/shamu/BoardConfigVendor.mk
