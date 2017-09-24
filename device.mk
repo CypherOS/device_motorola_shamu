@@ -198,9 +198,6 @@ PRODUCT_PACKAGES += \
     libion
 
 PRODUCT_PACKAGES += \
-    lights.shamu
-
-PRODUCT_PACKAGES += \
     bdAddrLoader
 
 PRODUCT_PACKAGES += \
