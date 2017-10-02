@@ -141,5 +141,8 @@ DEVICE_MATRIX_FILE := device/motorola/shamu/compatibility_matrix.xml
 
 -include vendor/motorola/shamu/BoardConfigVendor.mk
 
+# Recovery
+LZMA_RAMDISK_TARGETS := recovery
+
 # Enable workaround for slow rom flash
 BOARD_SUPPRESS_SECURE_ERASE := true
