@@ -80,7 +80,7 @@ PRODUCT_COPY_FILES += \
 
 # HIDL
 PRODUCT_COPY_FILES += \
-    device/moto/shamu/manifest.xml:system/vendor/manifest.xml
+    device/motorola/shamu/manifest.xml:system/vendor/manifest.xml
 
 # For GPS
 PRODUCT_COPY_FILES += \
@@ -429,4 +429,4 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.oem_unlock_supported=1
 
 # Treble packages
-$(call inherit-product, device/moto/shamu/treble.mk)
+$(call inherit-product, device/motorola/shamu/treble.mk)
