@@ -45,6 +45,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/shamu/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     device/motorola/shamu/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
     device/motorola/shamu/audio_policy_volumes_drc.xml:system/etc/audio_policy_volumes_drc.xml \
+    device/motorola/shamu/motvr_audio_policy_configuration.xml:system/etc/motvr_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:system/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml \
@@ -56,13 +57,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/shamu/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 
 PRODUCT_COPY_FILES += \
-<<<<<<< HEAD
-    device/motorola/shamu/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/motorola/shamu/audio_platform_info.xml:system/etc/audio_platform_info.xml
-
-PRODUCT_COPY_FILES += \
-=======
->>>>>>> 7537f6de... audio: migrate to xml audio policy configuration
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
