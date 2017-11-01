@@ -17,9 +17,12 @@
 */
 -->
 
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds. -->
+<resources>
 
-    <!-- If this is true, the screen will fade off. -->
+    <!-- Burn in protection -->
     <bool name="config_statusBarBurnInProtection">true</bool>
 
 </resources>
+
