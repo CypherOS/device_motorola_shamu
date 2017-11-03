@@ -95,11 +95,8 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-# Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
-BOARD_HAL_STATIC_LIBRARIES := libhealthd.shamu
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
-WITH_LINEAGE_CHARGER := false
 
 TARGET_RECOVERY_FSTAB = device/motorola/shamu/fstab.shamu
 # Ensure f2fstools are built
@@ -123,7 +120,7 @@ BOARD_HAS_AUDIO_DSP := true
 
 USE_DEVICE_SPECIFIC_CAMERA:= true
 
-BOARD_HAL_STATIC_LIBRARIES += libdumpstate.shamu
+BOARD_HAL_STATIC_LIBRARIES := libdumpstate.shamu
 
 USE_CLANG_PLATFORM_BUILD := true
 
