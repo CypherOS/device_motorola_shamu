@@ -24,6 +24,10 @@ ENABLE_CPUSETS := true
 
 TARGET_NO_BOOTLOADER := true
 
+TARGET_KERNEL_SOURCE := kernel/motorola/shamu
+TARGET_KERNEL_CONFIG := aoscp_shamu_defconfig
+BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE :=  2048
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
@@ -127,4 +131,7 @@ DONT_DEXPREOPT_PREBUILTS := true
 
 TARGET_FS_CONFIG_GEN += device/motorola/shamu/config.fs
 
--include vendor/moto/shamu/BoardConfigVendor.mk
+-include vendor/motorola/shamu/BoardConfigVendor.mk
+
+# Enable workaround for slow rom flash
+BOARD_SUPPRESS_SECURE_ERASE := true
