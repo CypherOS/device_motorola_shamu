@@ -224,9 +224,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libion
 
-#Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.shamu
+    lights.shamu \
+    android.hardware.light@2.0-impl
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
