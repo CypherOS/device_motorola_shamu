@@ -137,6 +137,8 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 TARGET_FS_CONFIG_GEN += device/motorola/shamu/config.fs
 
+DEVICE_MANIFEST_FILE := device/motorola/shamu/manifest.xml
+
 -include vendor/motorola/shamu/BoardConfigVendor.mk
 
 # Recovery
