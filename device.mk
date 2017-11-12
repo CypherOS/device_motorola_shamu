@@ -38,7 +38,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/shamu/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     device/motorola/shamu/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
     device/motorola/shamu/audio_policy_volumes_drc.xml:system/etc/audio_policy_volumes_drc.xml \
-	device/moto/shamu/motvr_audio_policy_configuration.xml:system/etc/motvr_audio_policy_configuration.xml \
+	device/motorola/shamu/motvr_audio_policy_configuration.xml:system/etc/motvr_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:system/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml \

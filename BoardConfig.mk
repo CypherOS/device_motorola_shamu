@@ -137,8 +137,8 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 TARGET_FS_CONFIG_GEN += device/motorola/shamu/config.fs
 
-DEVICE_MANIFEST_FILE := device/moto/shamu/manifest.xml
-DEVICE_MATRIX_FILE := device/moto/shamu/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE := device/motorola/shamu/manifest.xml
+DEVICE_MATRIX_FILE := device/motorola/shamu/compatibility_matrix.xml
 
 -include vendor/motorola/shamu/BoardConfigVendor.mk
 
