@@ -501,11 +501,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl
 
-# new gatekeeper HAL
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service
-
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl
 
