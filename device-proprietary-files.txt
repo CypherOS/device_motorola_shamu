@@ -140,6 +140,7 @@ vendor/lib/libchromatix_imx214_preview.so
 vendor/lib/libchromatix_imx214_snapshot_hdr.so
 vendor/lib/libchromatix_imx214_snapshot.so
 vendor/lib/libchromatix_imx214_video_hdr.so
+vendor/lib/libfrsdk.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
@@ -236,7 +237,7 @@ vendor/lib/libcne.so
 vendor/lib/libcneapiclient.so
 
 # Contacts adapter
--priv-app/BuaContactAdapter/BuaContactAdapter.apk:PRESIGNED
+-priv-app/BuaContactAdapter/BuaContactAdapter.apk:priv-app/BuaContactAdapter/BuaContactAdapter.apk:PRESIGNED
 
 # Diagnostic
 bin/diag_klog
@@ -261,7 +262,7 @@ lib/libdmjavaplugin.so
 lib/libdmengine.so:priv-app/DMService/lib/arm/libdmengine.so
 lib/libdmjavaplugin.so:priv-app/DMService/lib/arm/libdmjavaplugin.so
 -priv-app/DiagMon/DiagMon.apk
--priv-app/GCS/GCS.apk:PRESIGNED
+-priv-app/GCS/GCS.apk:priv-app/GCS/GCS.apk:PRESIGNED
 -priv-app/LifetimeData/LifetimeData.apk
 -priv-app/SprintDM/SprintDM.apk
 
@@ -279,7 +280,6 @@ vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
-vendor/lib/libWVphoneAPI.so
 vendor/lib/libWVStreamControlAPI_L1.so
 
 # DRM firmware
@@ -290,7 +290,7 @@ vendor/firmware/widevine.b03
 vendor/firmware/widevine.mdt
 
 # Project Fi
--app/Tycho/Tycho.apk:PRESIGNED
+-app/Tycho/Tycho.apk:app/Tycho/Tycho.apk:PRESIGNED
 
 # Graphics
 vendor/lib/egl/eglsubAndroid.so
@@ -320,10 +320,6 @@ vendor/firmware/a420_pm4.fw
 
 # GPS
 etc/flp.conf
-lib/hw/gps.msm8084.so
-lib/libgps.utils.so
-lib/libloc_core.so
-lib/libloc_eng.so
 vendor/lib/hw/activity_recognition.msm8084.so
 vendor/lib/hw/flp.msm8084.so
 vendor/lib/libgeofence.so
@@ -448,12 +444,12 @@ bin/usbhub
 bin/usbhub_init
 
 # Vzw
--app/VZWAPNLib/VZWAPNLib.apk:PRESIGNED
+-app/VZWAPNLib/VZWAPNLib.apk:app/VZWAPNLib/VZWAPNLib.apk:PRESIGNED
 etc/permissions/com.motorola.DirectedSMSProxy.xml
 etc/permissions/com.vzw.vzwapnlib.xml
 -priv-app/AppDirectedSMSProxy/AppDirectedSMSProxy.apk
--priv-app/MotoSignatureApp/MotoSignatureApp.apk:PRESIGNED
--priv-app/VZWAPNService/VZWAPNService.apk:PRESIGNED
+-priv-app/MotoSignatureApp/MotoSignatureApp.apk:priv-app/MotoSignatureApp/MotoSignatureApp.apk:PRESIGNED
+-priv-app/VZWAPNService/VZWAPNService.apk:priv-app/VZWAPNService/VZWAPNService.apk:PRESIGNED
 
 # Venus (media) firmware
 vendor/firmware/venus.b00
@@ -482,8 +478,8 @@ etc/firmware/vpu.mdt
 
 # Voice recognition
 etc/permissions/com.motorola.triggerenroll.xml
--priv-app/TriggerEnroll/TriggerEnroll.apk:PRESIGNED
--priv-app/TriggerTrainingService/TriggerTrainingService.apk:PRESIGNED
+-priv-app/TriggerEnroll/TriggerEnroll.apk:priv-app/TriggerEnroll/TriggerEnroll.apk:PRESIGNED
+-priv-app/TriggerTrainingService/TriggerTrainingService.apk:priv-app/TriggerTrainingService/TriggerTrainingService.apk:PRESIGNED
 lib/librecoglib.so
 lib/libsupermodel.so
 lib/libtrainingcheck.so
@@ -494,3 +490,6 @@ vendor/firmware/aonvr2.bin
 
 # WiFi
 vendor/firmware/bcm20795_firmware.ncd
+
+#Carrier Services
+-priv-app/CarrierServices/CarrierServices.apk:priv-app/CarrierServices/CarrierServices.apk:PRESIGNED
