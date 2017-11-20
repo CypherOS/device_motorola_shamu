@@ -68,13 +68,20 @@ const char *parameter_names[] = {
 
 #define STATE_ON "state=1"
 #define STATE_OFF "state=0"
-#define STATE_HDR_ON "state=2"
-#define STATE_HDR_OFF "state=3"
 #define MAX_LENGTH         50
 #define BOOST_SOCKET       "/dev/socket/mpdecision/pb"
+#define WAKE_GESTURE_PATH "/sys/bus/i2c/devices/1-004a/tsp"
 static int client_sockfd;
 static struct sockaddr_un client_addr;
 static int last_state = -1;
+
+enum {
+    PROFILE_POWER_SAVE = 0,
+    PROFILE_BALANCED,
+    PROFILE_HIGH_PERFORMANCE
+};
+
+static int current_power_profile = PROFILE_BALANCED;
 
 static void socket_init()
 {
@@ -160,21 +167,15 @@ static void process_video_encode_hint(void *metadata)
         return;
     }
 
-    if (metadata) {
-        if (!strncmp(metadata, STATE_ON, sizeof(STATE_ON))) {
-            /* Video encode started */
-            enc_boost(1);
-        } else if (!strncmp(metadata, STATE_OFF, sizeof(STATE_OFF))) {
-            /* Video encode stopped */
-            enc_boost(0);
-        }  else if (!strncmp(metadata, STATE_HDR_ON, sizeof(STATE_HDR_ON))) {
-            /* HDR usecase started */
-        } else if (!strncmp(metadata, STATE_HDR_OFF, sizeof(STATE_HDR_OFF))) {
-            /* HDR usecase stopped */
-        }else
-            return;
-    } else {
+    if (!metadata)
         return;
+
+    if (!strncmp(metadata, STATE_ON, sizeof(STATE_ON))) {
+        /* Video encode started */
+        enc_boost(1);
+    } else if (!strncmp(metadata, STATE_OFF, sizeof(STATE_OFF))) {
+        /* Video encode stopped */
+        enc_boost(0);
     }
 }
 
@@ -206,27 +207,15 @@ static void low_power(int on)
     }
 }
 
-static void process_low_power_hint(void* data)
-{
-    int on = (long) data;
-    if (client_sockfd < 0) {
-        ALOGE("%s: boost socket not created", __func__);
-        return;
-    }
-
-    low_power(on);
-}
-
 static void power_set_interactive(__attribute__((unused)) struct power_module *module, int on)
 {
-    if (last_state == -1) {
-        last_state = on;
-    } else {
-        if (last_state == on)
-            return;
-        else
-            last_state = on;
-    }
+    if (current_power_profile != PROFILE_BALANCED)
+        return;
+
+    if (last_state == on)
+        return;
+
+    last_state = on;
 
     ALOGV("%s %s", __func__, (on ? "ON" : "OFF"));
     if (on) {
@@ -236,27 +225,102 @@ static void power_set_interactive(__attribute__((unused)) struct power_module *m
     }
 }
 
+static void set_power_profile(int profile) {
+
+    if (profile == current_power_profile)
+        return;
+
+    ALOGV("%s: profile=%d", __func__, profile);
+
+    if (profile == PROFILE_BALANCED) {
+        low_power(0);
+        coresonline(1);
+        enc_boost(0);
+        ALOGD("%s: set balanced mode", __func__);
+    } else if (profile == PROFILE_HIGH_PERFORMANCE) {
+        low_power(0);
+        coresonline(1);
+        enc_boost(1);
+        ALOGD("%s: set performance mode", __func__);
+
+    } else if (profile == PROFILE_POWER_SAVE) {
+        coresonline(0);
+        enc_boost(0);
+        low_power(1);
+        ALOGD("%s: set powersave", __func__);
+    }
+
+    current_power_profile = profile;
+}
+
+static void sysfs_write(char *path, char *s)
+{
+    char buf[80];
+    int len;
+    int fd = open(path, O_WRONLY);
+
+    if (fd < 0) {
+        strerror_r(errno, buf, sizeof(buf));
+        ALOGE("Error opening %s: %s\n", path, buf);
+        return;
+    }
+
+    len = write(fd, s, strlen(s));
+    if (len < 0) {
+        strerror_r(errno, buf, sizeof(buf));
+        ALOGE("Error writing to %s: %s\n", path, buf);
+    }
+
+    close(fd);
+}
+
+static void set_feature(struct power_module *module __unused, feature_t feature, int state)
+{
+    switch (feature) {
+    case POWER_FEATURE_DOUBLE_TAP_TO_WAKE:
+        sysfs_write(WAKE_GESTURE_PATH, state ? "AUTO" : "OFF");
+        break;
+    default:
+        ALOGW("Error setting the feature, it doesn't exist %d\n", feature);
+        break;
+    }
+}
+
+int get_feature(struct power_module *module __unused, feature_t feature)
+{
+    if (feature == POWER_FEATURE_SUPPORTED_PROFILES) {
+        return 3;
+    }
+    return -1;
+}
+
 static void power_hint( __attribute__((unused)) struct power_module *module,
                         __attribute__((unused)) power_hint_t hint,
                         __attribute__((unused)) void *data)
 {
     switch (hint) {
         case POWER_HINT_INTERACTION:
+        case POWER_HINT_LAUNCH:
+            if (current_power_profile == PROFILE_POWER_SAVE)
+                return;
             ALOGV("POWER_HINT_INTERACTION");
             break;
-#if 0
-        case POWER_HINT_VSYNC:
-            ALOGV("POWER_HINT_VSYNC %s", (data ? "ON" : "OFF"));
-            break;
-#endif
         case POWER_HINT_VIDEO_ENCODE:
+            if (current_power_profile != PROFILE_BALANCED)
+                return;
             process_video_encode_hint(data);
             break;
+        case POWER_HINT_SET_PROFILE:
+            set_power_profile(*(int32_t *)data);
+            break;
         case POWER_HINT_LOW_POWER:
-             process_low_power_hint(data);
-             break;
+            if (data)
+                set_power_profile(PROFILE_POWER_SAVE);
+            else
+                set_power_profile(PROFILE_BALANCED);
+            break;
         default:
-             break;
+            break;
     }
 }
 
@@ -429,5 +493,7 @@ struct power_module HAL_MODULE_INFO_SYM = {
     .powerHint = power_hint,
     .get_number_of_platform_modes = get_number_of_platform_modes,
     .get_platform_low_power_stats = get_platform_low_power_stats,
-    .get_voter_list = get_voter_list
+    .get_voter_list = get_voter_list,
+    .setFeature = set_feature,
+    .getFeature = get_feature
 };
