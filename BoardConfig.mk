@@ -55,6 +55,8 @@ BOARD_EGL_CFG := device/motorola/shamu/egl.cfg
 
 BOARD_USES_ALSA_AUDIO := true
 
+BOARD_SUPPORTS_SOUND_TRIGGER := true
+
 # Wifi related defines
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
 BOARD_WLAN_DEVICE           := bcmdhd
@@ -68,7 +70,7 @@ WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_BUS := PCIE
 #BOARD_USES_SECURE_SERVICES := true
 
-#Bluetooth defines
+# Bluetooth defines
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/motorola/shamu/bluetooth
 BOARD_CUSTOM_BT_CONFIG := device/motorola/shamu/bluetooth/bt_vendor.conf
@@ -86,11 +88,6 @@ TARGET_NO_RPC := true
 
 TARGET_BOARD_INFO_FILE := device/motorola/shamu/board-info.txt
 
-# Render
-USE_OPENGL_RENDERER := true
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
 TARGET_USES_ION := true
 TARGET_HW_DISK_ENCRYPTION := false
 
@@ -105,9 +102,12 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
+# Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 TARGET_RECOVERY_FSTAB = device/motorola/shamu/fstab.shamu
+# Ensure f2fstools are built
+TARGET_USERIMAGES_USE_F2FS := true
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/motorola/shamu
 
@@ -127,7 +127,11 @@ BOARD_HAS_AUDIO_DSP := true
 
 USE_DEVICE_SPECIFIC_CAMERA:= true
 
+BOARD_HAL_STATIC_LIBRARIES += libdumpstate.shamu
+
 USE_CLANG_PLATFORM_BUILD := true
+
+TARGET_FS_CONFIG_GEN += device/motorola/shamu/config.fs
 
 # Disable dex-preopt of prebuilts to save space.
 DONT_DEXPREOPT_PREBUILTS := true
@@ -135,14 +139,18 @@ DONT_DEXPREOPT_PREBUILTS := true
 # Qualcomm Time Services
 BOARD_USES_QC_TIME_SERVICES := true
 
-TARGET_FS_CONFIG_GEN += device/motorola/shamu/config.fs
-
 DEVICE_MANIFEST_FILE := device/motorola/shamu/manifest.xml
 
--include vendor/motorola/shamu/BoardConfigVendor.mk
+# Render
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+USE_OPENGL_RENDERER := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
 
 # Recovery
 LZMA_RAMDISK_TARGETS := recovery
 
 # Enable workaround for slow rom flash
 BOARD_SUPPRESS_SECURE_ERASE := true
+
+-include vendor/motorola/shamu/BoardConfigVendor.mk
