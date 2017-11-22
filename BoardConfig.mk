@@ -142,6 +142,10 @@ TARGET_FS_CONFIG_GEN += device/motorola/shamu/config.fs
 
 DEVICE_MANIFEST_FILE := device/motorola/shamu/manifest.xml
 
+# Gestures
+TARGET_POWER_GESTURE_FILE := device/motorola/shamu/power/power_shamu.c
+TARGET_TAP_TO_WAKE_NODE := "/sys/bus/i2c/devices/1-004a/tsp"
+
 -include vendor/motorola/shamu/BoardConfigVendor.mk
 
 # Recovery
