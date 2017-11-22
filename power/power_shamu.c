@@ -72,6 +72,7 @@ const char *parameter_names[] = {
 #define STATE_HDR_OFF "state=3"
 #define MAX_LENGTH         50
 #define BOOST_SOCKET       "/dev/socket/mpdecision/pb"
+#define TAP_TO_WAKE_NODE "/sys/bus/i2c/devices/1-004a/tsp"
 static int client_sockfd;
 static struct sockaddr_un client_addr;
 static int last_state = -1;
@@ -322,6 +323,36 @@ static int extract_stats(uint64_t *list, char *file,
     return 0;
 }
 
+static void sysfs_write(char *path, char *s)
+{
+    char buf[80];
+    int len;
+    int fd = open(path, O_WRONLY);
+
+    if (fd < 0) {
+        strerror_r(errno, buf, sizeof(buf));
+        ALOGE("Error opening %s: %s\n", path, buf);
+        return;
+    }
+
+    len = write(fd, s, strlen(s));
+    if (len < 0) {
+        strerror_r(errno, buf, sizeof(buf));
+        ALOGE("Error writing to %s: %s\n", path, buf);
+    }
+
+    close(fd);
+}
+
+static void set_feature(struct power_module *module __unused, feature_t feature, int state)
+{
+    ALOGV("%s %s", __func__, (on ? "ON" : "OFF"));
+    if (feature == POWER_FEATURE_DOUBLE_TAP_TO_WAKE) {
+        sysfs_write(TAP_TO_WAKE_NODE, on ? "AUTO" : "ON");
+        return;
+    }
+}
+
 static int get_platform_low_power_stats(struct power_module *module,
     power_state_platform_sleep_state_t *list) {
     uint64_t stats[sizeof(parameter_names)] = {0};
@@ -429,5 +460,6 @@ struct power_module HAL_MODULE_INFO_SYM = {
     .powerHint = power_hint,
     .get_number_of_platform_modes = get_number_of_platform_modes,
     .get_platform_low_power_stats = get_platform_low_power_stats,
-    .get_voter_list = get_voter_list
+    .get_voter_list = get_voter_list,
+	.setFeature = set_feature
 };
