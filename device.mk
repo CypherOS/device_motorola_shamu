@@ -104,14 +104,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/bluetooth/BCM4356A2_001.003.015.0077.0214_ORC.hcd:$(TARGET_COPY_OUT_VENDOR)/firmware/bcm4354A2.hcd
 
-# Bluetooth HAL
+# Bluetooth
 PRODUCT_PACKAGES += \
-    libbt-vendor \
-    android.hardware.bluetooth@1.0-impl
-
-# Dumpstate HAL
-PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.shamu
+    libbt-vendor
 
 # For SPN display
 PRODUCT_COPY_FILES += \
@@ -128,7 +123,6 @@ DEVICE_PACKAGE_OVERLAYS := \
     device/motorola/shamu/overlay
 
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
     libwpa_client \
     hostapd \
     wificond \
@@ -161,21 +155,6 @@ PRODUCT_PACKAGES += \
     libqdMetaData
 
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@2.0-impl \
-    android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.composer@2.1-impl \
-    android.hardware.graphics.mapper@2.0-impl \
-    android.hardware.memtrack@1.0-impl \
-
-# RenderScript HAL
-PRODUCT_PACKAGES += \
-    android.hardware.renderscript@1.0-impl
-
-# Sensor HAL
-PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl
-
-PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libstagefrighthw \
     libOmxCore \
@@ -198,12 +177,6 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessingdescriptors \
     libqcompostprocbundle
 
-PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-impl \
-    android.hardware.audio.effect@2.0-impl \
-    android.hardware.broadcastradio@1.0-impl \
-    android.hardware.soundtrigger@2.0-impl
-
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.audio.monitorRotation=true
 
@@ -215,8 +188,6 @@ PRODUCT_PACKAGES += \
 
 #CAMERA
 PRODUCT_PACKAGES += \
-    android.hardware.camera.device@3.2-impl \
-    android.hardware.camera.provider@2.4-impl \
     libqomx_core \
     libmm-qcamera \
     libmmcamera_interface \
@@ -229,8 +200,7 @@ PRODUCT_PACKAGES += \
     libion
 
 PRODUCT_PACKAGES += \
-    lights.shamu \
-    android.hardware.light@2.0-impl
+    lights.shamu
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -321,10 +291,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.camera.ois.disable=0
 
-# GNSS HAL
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl
-
 # GPS configuration
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/gps.conf:system/etc/gps.conf
@@ -344,18 +310,12 @@ PRODUCT_PACKAGES += \
     liblbs_core \
     flp.conf
 
-# Memtrack HAL
-PRODUCT_PACKAGES += \
-    android.hardware.memtrack@1.0-impl
-
 # NFC packages
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     nfc_nci.bcm2079x.default \
     NfcNci \
-    Tag \
-    android.hardware.nfc@1.0-impl \
-    android.hardware.nfc@1.0-service
+    Tag
 
 # NFCEE access control
 PRODUCT_COPY_FILES += \
@@ -434,15 +394,9 @@ $(call inherit-product-if-exists, vendor/qcom/gpu/msm8x84/msm8x84-gpu-vendor.mk)
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.qualcomm.perf.cores_online=2
 
-# Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl
-
-PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-impl \
     power.shamu \
-    thermal.shamu \
-    android.hardware.thermal@1.0-impl
+    thermal.shamu
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
@@ -505,17 +459,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.first_api_level=21
 
-# Keymaster HAL
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl
-
-PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl
-
-# USB HAL
-PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
-
 # miracast props
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1﻿
+	
+# Treble packages
+$(call inherit-product, device/motorola/shamu/treble.mk)
