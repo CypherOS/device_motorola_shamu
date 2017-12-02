@@ -32,17 +32,18 @@ PRODUCT_COPY_FILES += \
     device/motorola/shamu/apq8084-taiko-tfa9890_stereo_co_Button_Jack.kl:system/usr/keylayout/apq8084-taiko-tfa9890_stereo_co_Button_Jack.kl \
 	device/motorola/shamu/atmel_mxt_ts.idc:system/usr/idc/atmel_mxt_ts.idc
 
+# Audio
 PRODUCT_COPY_FILES += \
-    device/motorola/shamu/audio_effects.conf:system/etc/audio_effects.conf \
-    device/motorola/shamu/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/motorola/shamu/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-    device/motorola/shamu/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
-    device/motorola/shamu/audio_policy_volumes_drc.xml:system/etc/audio_policy_volumes_drc.xml \
-	device/motorola/shamu/motvr_audio_policy_configuration.xml:system/etc/motvr_audio_policy_configuration.xml \
+    device/motorola/shamu/audio/audio_effects.conf:system/etc/audio_effects.conf \
+    device/motorola/shamu/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    device/motorola/shamu/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+    device/motorola/shamu/audio/audio_policy_volumes_drc.xml:system/etc/audio_policy_volumes_drc.xml \
+    device/motorola/shamu/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/motorola/shamu/audio/motvr_audio_policy_configuration.xml:system/etc/motvr_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:system/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:system/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:system/etc/default_volume_tables.xml
 
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/media_profiles.xml:system/etc/media_profiles.xml \
