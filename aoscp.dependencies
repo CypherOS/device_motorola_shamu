@@ -2,13 +2,13 @@
   {
     "repository":  "kernel_motorola_shamu",
     "target_path": "kernel/motorola/shamu",
-    "branch":      "oreo-dr3",
+    "branch":      "oreo-mr1-release",
     "remote":      "aoscp"
   },
   {
     "repository":  "proprietary_vendor_motorola",
     "target_path": "vendor/motorola",
-    "branch":      "oreo-dr3",
+    "branch":      "oreo-mr1-release",
     "remote":      "aoscp"
   }
 ]
