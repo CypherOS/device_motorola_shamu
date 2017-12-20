@@ -34,7 +34,7 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    device/motorola/shamu/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/motorola/shamu/audio/audio_effects.xml:system/vendor/etc/audio_effects.xml \
     device/motorola/shamu/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     device/motorola/shamu/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
     device/motorola/shamu/audio/audio_policy_volumes_drc.xml:system/etc/audio_policy_volumes_drc.xml \
