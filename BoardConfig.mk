@@ -87,6 +87,7 @@ TARGET_BOARD_INFO_FILE := device/motorola/shamu/board-info.txt
 # Render
 USE_OPENGL_RENDERER := true
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_USES_HWC2 := true
 TARGET_USES_ION := true
