@@ -19,9 +19,6 @@
 #
 # Everything in this directory will become public
 
-PRODUCT_COPY_FILES := \
-    $(LOCAL_KERNEL):kernel
-
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/init.shamu.rc:root/init.shamu.rc \
     device/motorola/shamu/init.shamu.power.rc:root/init.shamu.power.rc \
