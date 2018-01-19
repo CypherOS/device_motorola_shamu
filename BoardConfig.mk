@@ -25,7 +25,7 @@ ENABLE_CPUSETS := true
 TARGET_NO_BOOTLOADER := true
 
 TARGET_KERNEL_SOURCE := kernel/motorola/shamu
-TARGET_KERNEL_CONFIG := aoscp_shamu_defconfig
+TARGET_KERNEL_CONFIG := shamu_defconfig
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 
 BOARD_KERNEL_BASE := 0x00000000
