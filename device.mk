@@ -225,7 +225,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio effects
 PRODUCT_PACKAGES += \
-    libqcomvisualizer \
+    libqcompostprocbundle \
+	libqcomvisualizer \
     libqcomvoiceprocessing \
     libqcomvoiceprocessingdescriptors
 
