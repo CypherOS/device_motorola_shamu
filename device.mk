@@ -315,15 +315,12 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag
 
-# NFCEE access control
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/nfcee_access.xml:system/etc/nfcee_access.xml
-
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:system/etc/permissions/android.hardware.nfc.hcef.xml \
+    device/motorola/shamu/nfc/nfcee_access.xml:system/etc/nfcee_access.xml \
     device/motorola/shamu/nfc/libnfc-brcm.conf:system/vendor/etc/libnfc-brcm.conf \
     device/motorola/shamu/nfc/libnfc-brcm-20795a10.conf:system/vendor/etc/libnfc-brcm-20795a10.conf
 
