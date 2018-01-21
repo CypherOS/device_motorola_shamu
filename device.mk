@@ -460,6 +460,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	
 # Treble packages
 $(call inherit-product, device/motorola/shamu/treble.mk)
-
-PRODUCT_ENFORCE_RRO_TARGETS := \
-    framework-res
