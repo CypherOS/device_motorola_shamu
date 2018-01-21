@@ -70,12 +70,9 @@ WIFI_BUS := PCIE
 
 #Bluetooth defines
 BOARD_HAVE_BLUETOOTH_BCM := true
-ifeq ($(TARGET_PRODUCT),bt_shamu)
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/motorola/shamu/bluetooth_extra
-else
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/motorola/shamu/bluetooth
-endif
-BOARD_CUSTOM_BT_CONFIG := device/motorola/shamu/bluetooth/vnd_shamu.txt
+BOARD_CUSTOM_BT_CONFIG := device/motorola/shamu/bluetooth/bt_vendor.conf
+AUDIO_FEATURE_ENABLED_HFP := false
 
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm8084
@@ -87,15 +84,15 @@ TARGET_BOARD_INFO_FILE := device/motorola/shamu/board-info.txt
 # Render
 USE_OPENGL_RENDERER := true
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-TARGET_USES_HWC2 := true
+SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
 TARGET_USES_ION := true
 TARGET_USES_GRALLOC1_ADAPTER := true
+TARGET_USES_HWC2 := true
+TARGET_USES_HWC2ON1ADAPTER := true
 VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 TARGET_HW_DISK_ENCRYPTION := false
-TARGET_CRYPTFS_HW_PATH := device/motorola/shamu/cryptfs_hw
 
 TARGET_TOUCHBOOST_FREQUENCY := 1500
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -111,6 +108,9 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 TARGET_RECOVERY_FSTAB = device/motorola/shamu/fstab.shamu
+
+# Ensure f2fstools are built
+TARGET_USERIMAGES_USE_F2FS := true
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/motorola/shamu
 

@@ -24,6 +24,12 @@ r_dir_file(rild, netmgrd)
 # b/18352920 suppress denials until the procfs lookup is removed
 dontaudit rild domain:dir r_dir_perms;
 
+# rild reads qcril.db linked to /system/etc/ril/qcril.db
+allow rild radio_data_file:dir search;
+
+# for /system/bin/qmi_motext_hook
+allow rild system_file:file execute_no_trans;
+
 # Allow permissions for FSG
 allow rild fsg_file:dir search;
 allow rild fsg_file:file r_file_perms;

@@ -32,17 +32,18 @@ PRODUCT_COPY_FILES += \
     device/motorola/shamu/apq8084-taiko-tfa9890_stereo_co_Button_Jack.kl:system/usr/keylayout/apq8084-taiko-tfa9890_stereo_co_Button_Jack.kl \
 	device/motorola/shamu/atmel_mxt_ts.idc:system/usr/idc/atmel_mxt_ts.idc
 
+# Audio
 PRODUCT_COPY_FILES += \
-    device/motorola/shamu/audio_effects.xml:system/vendor/etc/audio_effects.xml \
-    device/motorola/shamu/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/motorola/shamu/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-    device/motorola/shamu/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
-    device/motorola/shamu/audio_policy_volumes_drc.xml:system/etc/audio_policy_volumes_drc.xml \
-    device/motorola/shamu/motvr_audio_policy_configuration.xml:system/etc/motvr_audio_policy_configuration.xml \
+    device/motorola/shamu/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/motorola/shamu/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    device/motorola/shamu/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+    device/motorola/shamu/audio/audio_policy_volumes_drc.xml:system/etc/audio_policy_volumes_drc.xml \
+    device/motorola/shamu/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/motorola/shamu/audio/motvr_audio_policy_configuration.xml:system/etc/motvr_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:system/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:system/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:system/etc/default_volume_tables.xml
 
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/media_profiles_V1_0.xml:system/vendor/etc/media_profiles_V1_0.xml \
@@ -101,10 +102,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/bluetooth/BCM4356A2_001.003.015.0077.0214_ORC.hcd:$(TARGET_COPY_OUT_VENDOR)/firmware/bcm4354A2.hcd
 
-# Bluetooth HAL
+# Bluetooth
 PRODUCT_PACKAGES += \
     libbt-vendor
-	
+
 # For SPN display
 PRODUCT_COPY_FILES += \
     device/motorola/shamu/spn-conf.xml:system/etc/spn-conf.xml
@@ -136,7 +137,7 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
-	libxml2
+    libxml2
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
@@ -146,6 +147,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gralloc.msm8084 \
     hwcomposer.msm8084 \
+    libgenlock \
     libqdutils \
     libqdMetaData \
     memtrack.msm8084
@@ -165,7 +167,9 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
-    libaudio-resampler
+    libaudio-resampler \
+    libqcomvoiceprocessingdescriptors \
+    libqcompostprocbundle
 
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true \
@@ -198,6 +202,7 @@ PRODUCT_PACKAGES += \
 #CAMERA
 PRODUCT_PACKAGES += \
     libqomx_core \
+    libmm-qcamera \
     libmmcamera_interface \
     libmmjpeg_interface \
     camera.msm8084 \
@@ -319,16 +324,22 @@ PRODUCT_PACKAGES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
     nfc_nci.bcm2079x.default \
     NfcNci \
     Tag
 
+# NFCEE access control
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/nfcee_access.xml:system/etc/nfcee_access.xml
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:system/etc/permissions/android.hardware.nfc.hcef.xml \
-    device/motorola/shamu/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    device/motorola/shamu/nfc/libnfc-brcm-20795a10.conf:system/etc/libnfc-brcm-20795a10.conf
+    device/motorola/shamu/nfc/libnfc-brcm.conf:system/vendor/etc/libnfc-brcm.conf \
+    device/motorola/shamu/nfc/libnfc-brcm-20795a10.conf:system/vendor/etc/libnfc-brcm-20795a10.conf
 
 # Modem debugger
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
@@ -368,6 +379,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
    dalvik.vm.heapgrowthlimit=256m \
    dalvik.vm.heapminfree=2m 
+
+# In userdebug, add minidebug info the the boot image and the system server to support
+# diagnosing native crashes.
+ifneq (,$(filter userdebug, $(TARGET_BUILD_VARIANT)))
+    # Boot image.
+    PRODUCT_DEX_PREOPT_BOOT_FLAGS += --generate-mini-debug-info
+    # System server and some of its services.
+    # Note: we cannot use PRODUCT_SYSTEM_SERVER_JARS, as it has not been expanded at this point.
+    $(call add-product-dex-preopt-module-config,services,--generate-mini-debug-info)
+    $(call add-product-dex-preopt-module-config,wifi-service,--generate-mini-debug-info)
+endif
 
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
@@ -417,6 +439,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     audio_hal.period_size=192
 
+# low audio flinger standby delay to reduce power consumption
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.audio.flinger_standbytime_ms=300
+
 # Set correct voice call audio property values
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.vc_call_vol_steps=6 \
@@ -444,10 +470,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # ro.product.first_api_level indicates the first api level the device has commercially launched on.
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.first_api_level=21
-
-# Google Assistant
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opa.eligible_device=true
 
 # miracast props
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -1,5 +1,10 @@
 /data/cam_socket[23]           u:object_r:camera_socket:s0
 /data/diag_logs(/.*)?          u:object_r:diag_logs:s0
+
+# NFC labeling
+/data/vendor/nfc(/.*)? u:object_r:nfc_vendor_data_file:s0
+
+# Data files
 /data/misc/radio(/.*)?         u:object_r:radio_data_file:s0
 /data/nfc(/.*)?                u:object_r:nfc_data_file:s0
 /data/time(/.*)?               u:object_r:time_data_file:s0
@@ -52,6 +57,7 @@
 /dev/block/platform/msm_sdcc\.1/by-name/metadata     u:object_r:metadata_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/cache        u:object_r:cache_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/misc         u:object_r:misc_block_device:s0
+/dev/block/zram0                                     u:object_r:swap_block_device:s0
 
 # Customer Identifier
 /dev/block/platform/msm_sdcc.1/by-name/cid          u:object_r:cid_block_device:s0
@@ -143,7 +149,8 @@
 /system/bin/ATFWD-daemon        u:object_r:atfwd_exec:s0
 
 # Bluetooth
-/sys/class/rfkill/rfkill0/state u:object_r:sysfs_bluetooth_writable:s0
+/sys/class/rfkill/rfkill0/state -- u:object_r:sysfs_bluetooth_writable:s0
+/sys/class/rfkill/rfkill0/type -- u:object_r:sysfs_bluetooth_writable:s0
 
 # Sysfs entry for the RmNet function driver
 /sys/class/android_usb/f_rmnet_smd_sdio/transport  --  u:object_r:sysfs_rmnet:s0
@@ -161,6 +168,8 @@
 /sys/devices/f9925000\.i2c/i2c-0/0-001c/power_supply/battery/cycle_count u:object_r:sysfs_batteryinfo:s0
 /sys/devices/f9925000\.i2c/i2c-0/0-001c/power_supply/battery/temp        u:object_r:sysfs_batteryinfo:s0
 /sys/devices/f9964000\.i2c/i2c-8/8-0048/temp1_input                      u:object_r:sysfs_batteryinfo:s0
+/sys/devices/fd900000.qcom,mdss_mdp/qcom,mdss_fb_primary.164/leds/lcd-backlight/brightness u:object_r:sysfs_leds:s0
+/sys/devices/system/cpu(/.*)?                            u:object_r:sysfs_devices_system_cpu:s0
 
 # Context for mpdecision
 /sys/module/msm_thermal/core_control/cpus_offlined              u:object_r:sysfs_mpdecision:s0
@@ -171,6 +180,9 @@
 /sys/devices/msm_hsic_host/host_ready                    u:object_r:sysfs_msm_hsic_host:s0
 
 /sys/devices/cycapsense_prog.1/cycapsense_fw             u:object_r:sysfs_capsense_update:s0
+/sys/devices/leds-qpnp-11/leds/red/brightness            u:object_r:sysfs_leds:s0
+/sys/devices/leds-qpnp-12/leds/green/brightness          u:object_r:sysfs_leds:s0
+/sys/devices/leds-qpnp-13/leds/blue/brightness           u:object_r:sysfs_leds:s0
 /sys/devices/mmi_sar_ctrl.[0-9]*/sar_wifi                u:object_r:sysfs_sar_wifi:s0
 
 # sysfs files used by wifi
