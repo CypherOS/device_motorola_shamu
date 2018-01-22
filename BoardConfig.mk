@@ -24,7 +24,7 @@ ENABLE_CPUSETS := true
 
 TARGET_NO_BOOTLOADER := true
 
-TARGET_KERNEL_SOURCE := kernel/moto/shamu
+TARGET_KERNEL_SOURCE := kernel/motorola/shamu
 TARGET_KERNEL_CONFIG := shamu_defconfig
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 
@@ -51,7 +51,7 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 # handled by the hardware composer
 MAX_VIRTUAL_DISPLAY_DIMENSION := 2048
 
-BOARD_EGL_CFG := device/moto/shamu/egl.cfg
+BOARD_EGL_CFG := device/motorola/shamu/egl.cfg
 
 BOARD_USES_ALSA_AUDIO := true
 
@@ -71,18 +71,18 @@ WIFI_BUS := PCIE
 #Bluetooth defines
 BOARD_HAVE_BLUETOOTH_BCM := true
 ifeq ($(TARGET_PRODUCT),bt_shamu)
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/moto/shamu/bluetooth_extra
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/motorola/shamu/bluetooth_extra
 else
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/moto/shamu/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/motorola/shamu/bluetooth
 endif
-BOARD_CUSTOM_BT_CONFIG := device/moto/shamu/bluetooth/vnd_shamu.txt
+BOARD_CUSTOM_BT_CONFIG := device/motorola/shamu/bluetooth/vnd_shamu.txt
 
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm8084
 TARGET_BOOTLOADER_BOARD_NAME := shamu
 TARGET_NO_RPC := true
 
-TARGET_BOARD_INFO_FILE := device/moto/shamu/board-info.txt
+TARGET_BOARD_INFO_FILE := device/motorola/shamu/board-info.txt
 
 # Render
 USE_OPENGL_RENDERER := true
@@ -94,7 +94,7 @@ TARGET_USES_GRALLOC1_ADAPTER := true
 VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 TARGET_HW_DISK_ENCRYPTION := false
-TARGET_CRYPTFS_HW_PATH := device/moto/shamu/cryptfs_hw
+TARGET_CRYPTFS_HW_PATH := device/motorola/shamu/cryptfs_hw
 
 TARGET_TOUCHBOOST_FREQUENCY := 1500
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -109,14 +109,14 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-TARGET_RECOVERY_FSTAB = device/moto/shamu/fstab.shamu
+TARGET_RECOVERY_FSTAB = device/motorola/shamu/fstab.shamu
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/moto/shamu
+TARGET_RELEASETOOLS_EXTENSIONS := device/motorola/shamu
 
 # Support Native Layer RF cutback
 BOARD_USES_CUTBACK_IN_RILD := true
 
-BOARD_SEPOLICY_DIRS += device/moto/shamu/sepolicy
+BOARD_SEPOLICY_DIRS += device/motorola/shamu/sepolicy
 
 HAVE_ADRENO_SOURCE:= false
 
@@ -142,12 +142,12 @@ endif
 # Qualcomm Time Services
 BOARD_USES_QC_TIME_SERVICES := true
 
-TARGET_FS_CONFIG_GEN += device/moto/shamu/config.fs
+TARGET_FS_CONFIG_GEN += device/motorola/shamu/config.fs
 
-DEVICE_MANIFEST_FILE := device/moto/shamu/manifest.xml
-DEVICE_MATRIX_FILE := device/moto/shamu/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE := device/motorola/shamu/manifest.xml
+DEVICE_MATRIX_FILE := device/motorola/shamu/compatibility_matrix.xml
 
--include vendor/moto/shamu/BoardConfigVendor.mk
+-include vendor/motorola/shamu/BoardConfigVendor.mk
 
 # Recovery
 LZMA_RAMDISK_TARGETS := recovery

@@ -19,13 +19,13 @@
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
-$(call inherit-product, device/moto/shamu/device.mk)
+$(call inherit-product, device/motorola/shamu/device.mk)
 $(call inherit-product-if-exists, vendor/motorola/shamu/device-vendor.mk)
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/du/config/common_full_phone.mk)
+$(call inherit-product, vendor/aoscp/configs/common_full_phone.mk)
 
-PRODUCT_NAME := du_shamu
+PRODUCT_NAME := aoscp_shamu
 PRODUCT_DEVICE := shamu
 PRODUCT_BRAND := google
 PRODUCT_MODEL := Nexus 6
