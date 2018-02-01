@@ -113,6 +113,9 @@ TARGET_RECOVERY_FSTAB = device/motorola/shamu/fstab.shamu
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/motorola/shamu
 
+# Disable Brotli Compression
+TARGET_OTA_DISABLE_BROTLI := true
+
 # Support Native Layer RF cutback
 BOARD_USES_CUTBACK_IN_RILD := true
 
