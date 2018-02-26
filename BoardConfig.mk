@@ -157,3 +157,8 @@ TARGET_USES_64_BIT_BINDER := true
 
 # Enable workaround for slow rom flash
 BOARD_SUPPRESS_SECURE_ERASE := true
+
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /system/lib/libfacenet.so|libprotobuf-cpp-preo.so
+	
