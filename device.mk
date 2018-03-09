@@ -202,6 +202,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=false \
     ro.audio.monitorRotation=true
+	
+# Health
+PRODUCT_PACKAGES += \
+   android.hardware.health@1.0-convert \
+   android.hardware.health@1.0-impl \
+   android.hardware.health@1.0-service
 
 # Keymaster HAL
 PRODUCT_PACKAGES += \
