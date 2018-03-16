@@ -21,5 +21,17 @@
 
     <!-- Whether device has turbo power charging support -->
     <bool name="config_hasTurboPowerCharger">true</bool>
+	
+	<integer name="config_drawVKeyCode">100</integer>
+	
+	<integer name="config_fingerprintSingleTapKeyCode">100</integer>
+	
+    <integer name="config_fingerprintDoubleTapKeyCode">100</integer>
+
+    <integer name="config_fingerprintLongPressKeyCode">100</integer>
+
+    <integer name="config_fingerprintSwipeLeftKeyCode">100</integer>
+
+    <integer name="config_fingerprintSwipeRightKeyCode">100</integer>
 
 </resources>
