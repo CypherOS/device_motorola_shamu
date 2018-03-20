@@ -376,9 +376,6 @@
     <integer name="config_bluetooth_tx_cur_ma">46</integer>
     <integer name="config_bluetooth_operating_voltage_mv">3500</integer>
 
-    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveNotificationLed">true</bool>
-
     <!-- Default color for notification LED is green. -->
     <color name="config_defaultNotificationColor">#ff0000ff</color>
 
@@ -387,16 +384,6 @@
 
     <!-- Default LED off time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOff">9000</integer>
-
-    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveBatteryLed">true</bool>
-
-    <!-- Does the notification LED support multiple colors?
-         Used to decide if the user can change the colors -->
-    <bool name="config_multiColorNotificationLed">true</bool>
-
-    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
-    <bool name="config_multiColorBatteryLed">true</bool>
 	
 	<!-- Enable doze alwaysOn Display -->
     <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
