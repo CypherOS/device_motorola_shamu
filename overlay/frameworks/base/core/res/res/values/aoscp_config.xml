@@ -19,7 +19,9 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Whether device has turbo power charging support -->
-    <bool name="config_hasTurboPowerCharger">true</bool>
+	<!-- Paths to fast charging status file to detect whether an oem fast charger is active -->
+    <string-array name="config_oemFastChargerStatusPaths" translatable="false">
+        <item>/sys/class/power_supply/battery/charge_rate</item>
+    </string-array>
 
 </resources>
