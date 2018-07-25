@@ -25,6 +25,10 @@ $(call inherit-product-if-exists, vendor/motorola/shamu/device-vendor.mk)
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/aoscp/configs/common_full_phone.mk)
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2560
+TARGET_SCREEN_WIDTH := 1440
+
 PRODUCT_NAME := aoscp_shamu
 PRODUCT_DEVICE := shamu
 PRODUCT_BRAND := google
