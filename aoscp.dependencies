@@ -1,0 +1,13 @@
+
+[
+ {
+   "repository":  "kernel_motorola_shamu",
+   "target_path": "kernel/motorola/shamu",
+   "remote":      "aoscp"
+ },
+ {
+   "repository":  "proprietary_vendor_motorola",
+   "target_path": "vendor/motorola",
+   "remote":      "aoscp"
+ }
+]
